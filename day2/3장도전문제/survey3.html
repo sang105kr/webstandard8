@@ -16,18 +16,18 @@
   </article>
   <hr>
   <section>
-    <form action="">
+    <form action="서버프로그램" method="post">
       <p>
         <span>학년</span>
-        <label><input type="radio" name="grade">1학년</input></label>
-        <label><input type="radio" name="grade">2학년</input></label>
-        <label><input type="radio" name="grade">3학년</input></label>
-        <label><input type="radio" name="grade">4학년</input></label>
+        <label><input type="radio" name="grade" value="1">1학년</input></label>
+        <label><input type="radio" name="grade" value="2">2학년</input></label>
+        <label><input type="radio" name="grade" value="3">3학년</input></label>
+        <label><input type="radio" name="grade" value="4">4학년</input></label>
       </p>
       <p>
         <span>성</span>
-        <label><input type="radio" name="gender">남</input></label>
-        <label><input type="radio" name="gender">녀</input></label>
+        <label><input type="radio" name="gender" value="male">남</input></label>
+        <label><input type="radio" name="gender" value="female">녀</input></label>
       </p>
       <p>
         <span>관심분야</span>
@@ -40,15 +40,16 @@
       </p>
       <p>
         <span>진로</span>
-        <label><input type="checkbox" name="dev">개발</label>
-        <label><input type="checkbox" name="plan">기획</label>
-        <label><input type="checkbox" name="busi">영업</label>
-        <label><input type="checkbox" name="startup">창업</label>
+        <label><input type="checkbox" name="dev" value="1">개발</label>
+        <label><input type="checkbox" name="plan" value="2">기획</label>
+        <label><input type="checkbox" name="busi" value="3">영업</label>
+        <label><input type="checkbox" name="startup" value="4">창업</label>
       </p>
       <p>
         <p>남기고싶은말</p>
         <textarea cols="30" rows="10" placeholder="글을 남겨주세요"></textarea>
       </p>
+      <p><input type="submit" value="전송"></p>
     </form>
   </section>
   <footer>
