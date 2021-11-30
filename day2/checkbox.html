@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <fieldset>
+    <legend>오늘 점심은?</legend>
+    <form action="서버프로그램">
+      <p><label><input type="checkbox" name="hamburger" value="1" checked>햄버거</label> </p>
+      <p><label><input type="checkbox" name="soup" value="2" >돼지국밥</label> </p>
+      <p><label><input type="checkbox" name="pork" value="3" >돈까스</label> </p>
+      <p><input type="submit" value="전송"></p>
+    </form>
+  </fieldset>
+  <p>오늘 저녁은?</p>
+  <form action="서버프로그램">
+    <p><input id="burger" type="radio" name="dinner" value="1" checked><label for="burger">햄버거</label> </p>
+    <p><input id="soup" type="radio" name="dinner" value="2" ><label for="soup">돼지국밥</label> </p>
+    <p><input id="pork" type="radio" name="dinner" value="3" ><label for="pork">돈까스</label> </p>
+    <p><input type="submit" value="전송"></p>
+  </form>
+  <p>오늘의 간식?</p>
+  <form action="서버프로그램">
+    <select name="snack" id="">
+      <option value="">==선택==</option>
+      <option value="1">초코파이</option>
+      <option value="2">초콜릿</option>
+      <option value="3">핫도그</option>
+    </select>
+    <p><button>전송</button></p>
+    <p><button><img src="/media/2장/media/mango.png" alt=""></button></p>
+    <p><input type="image" src="/media/2장/media/apple.png" width="50px" height="20px"></p>
+  </form>
+  <p>오늘의 야식</p>
+  <form action="서버프로그램">
+    <p>야식: <input type="text" name="mstack" list="kind"></p>
+    <p>
+      <datalist id="kind">
+        <option value="라면">
+        <option value="치킨">
+        <option value="피자">
+      </datalist>  
+    </p>
+  </form>
+</body>
+</html>
