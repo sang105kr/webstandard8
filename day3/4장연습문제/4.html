@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스 셀렉터</title>
+  <style>
+    .main {
+      background-color: aliceblue;
+    }
+    .main .headline{
+      text-align: center;
+      color:brown;
+    }
+    .main .help.h1{
+      color:blue;
+    }
+    .main .help.h2{
+      color:orange;
+      font-size: 1.5em;
+    }
+    #hot{
+      background-color: orange;
+    }
+  </style>
+</head>
+<body class="main">
+  <h1 class="headline">클래스 셀렉터</h1>
+  <hr>
+  <div class="help h1">도움말</div>
+  <p class="help h2">!!경고 메시지</p>
+  <p id="hot">뜨거운 태양</p>
+</body>
+</html>
