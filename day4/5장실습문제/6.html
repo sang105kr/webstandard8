@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes question1 {
+      from { transform:rotate(0deg);}
+      to { transform:rotate(360deg);}
+    }
+    @keyframes question2 {
+      0% { transform:rotate(-90deg);}
+      50% { transform:rotate(90deg);}
+      100% { transform:rotate(-90deg);}
+    }
+
+    img {
+      outline:1px solid red;
+    }
+    #img1:hover{
+      animation-name: question1;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+    #img2:hover{
+      animation-name: question2;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+  </style>
+</head>
+<body>
+  <h3>어지러워요</h3>
+  <hr>
+  <img id="img1" src="/media/4장/media/spongebob.png" width="100" height="100" alt="">
+  <img id="img2" src="/media/4장/media/spongebob.png" width="100" height="100" alt="">
+</body>
+</html>

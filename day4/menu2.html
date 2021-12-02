@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * { outline:1px solid red;} */
+    :root{
+      --height-size:10px;
+    }
+    a {
+      text-decoration: none;
+    }
+    ul {
+      list-style: none;
+      padding:0;
+    }
+    
+    nav {
+      position:sticky;
+      top:0;
+      /* background-color: #666; */
+    }
+
+    nav a {
+      color:white;
+    }
+
+    .depth1 {
+      background-color: #666;
+    }
+    .depth1 > li{
+      display:inline-block;
+      position:relative;
+      height:calc(var(--height-size)*3);
+      width:60px;
+    }
+
+    .depth1 > li:hover .depth2{
+      display:block;
+    }
+    
+    .depth2 {
+      display:none;
+      background-color: #666;
+      position:absolute;
+      top:calc(var(--height-size)*3); left:0;
+      transition: display 1s;
+    }
+
+    .ad {
+      width:100px; height:200px;
+      background-color: tomato;
+      color: white;
+      position: fixed;
+      bottom:100px;
+      right:20px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="depth1">
+      <li>
+        <a href="#">menu1</a>
+        <ul class="depth2">
+          <li><a href="http://www.naver.com">menu11</a></li>
+          <li><a href="http://www.google.com">menu12</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">menu2</a>
+        <ul class="depth2">
+          <li><a href="">menu21</a></li>
+          <li><a href="">menu22</a></li>
+        </ul>
+      </li>
+      <li><a href="#">menu3</a></li>
+    </ul>
+  </nav>
+  <main>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio harum numquam libero corrupti enim consequuntur autem nemo, debitis sunt dolorem, excepturi non! Reprehenderit dolorum nisi nesciunt, quisquam accusamus quasi possimus.
+    Tenetur deserunt delectus labore, soluta quam officia officiis quasi, minima explicabo fuga eligendi, eos corporis at iure esse nihil molestias aliquid dolorum odit facere assumenda! Odit commodi beatae quae earum?
+    Consectetur, atque non delectus velit officia aut omnis, accusamus eligendi aperiam blanditiis amet dolorem incidunt qui recusandae odit esse eos debitis cumque soluta nihil pariatur quis tempore. Culpa, distinctio eius.
+    Repellendus illum ullam aut aperiam, accusantium inventore labore tempore neque excepturi magni saepe, ducimus expedita laudantium reiciendis, quia facere provident nobis. Pariatur magni consequatur eum quaerat inventore? Officiis, nisi maxime.
+    Perspiciatis assumenda molestiae natus exercitationem nemo. Tempore recusandae eveniet, tempora minus natus omnis a veniam. Ratione provident corporis nam, neque sequi libero, praesentium exercitationem, rem quam quia sunt? Tempore, voluptates?
+    Eveniet sequi nulla nisi cupiditate ullam eaque minima, repellendus non rem illum consequatur alias! Quo expedita architecto voluptas est, amet aliquam deserunt ipsum odio, aspernatur nostrum aut sapiente vero? Obcaecati.
+    Quia doloribus excepturi, aut similique nesciunt accusantium non, saepe perferendis recusandae dolorem unde facere nihil maiores nemo, eveniet error. Quis velit impedit quae amet molestiae laboriosam quos ipsa aspernatur deleniti.
+    Saepe nulla impedit reprehenderit accusantium autem culpa id numquam deserunt, voluptate odit blanditiis officia aut quis laborum maiores sapiente explicabo temporibus adipisci quod? Nesciunt nostrum, beatae reprehenderit autem enim ducimus!
+    Eos sint et dolores provident ipsum tempora optio pariatur voluptatem ullam voluptate odio, ab, adipisci rerum minus natus fugit consequuntur soluta! Obcaecati velit fugit sint earum nam cupiditate ut iusto!
+    Perferendis, neque! Nemo recusandae laudantium architecto quisquam voluptate, ducimus, doloribus incidunt nostrum consequatur similique rerum corporis. Quaerat temporibus adipisci nihil provident ad nesciunt soluta totam dolores? Reiciendis eos corrupti laborum.
+   </p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur hic numquam temporibus, iusto a molestiae vitae ea voluptate ratione aliquid explicabo quis odio, cum tenetur. Cum quaerat quae cupiditate odio.
+   Ad, molestiae harum aspernatur perspiciatis ex veniam labore a iusto? Laboriosam numquam ducimus odit! Hic blanditiis officia rerum, ad optio eum consequatur repellat culpa id harum doloremque numquam animi expedita!
+   Magni non temporibus mollitia voluptates deleniti aliquid expedita autem quos quo sit labore, praesentium repudiandae nesciunt perspiciatis quibusdam amet dicta tenetur iusto. Assumenda voluptate aperiam in. Ad explicabo voluptatem corporis?
+   Maxime molestiae, alias repellendus porro sed quos odio voluptatum! Omnis odio amet culpa ab! Soluta cum dolorum atque, nihil at nisi obcaecati in quam, nemo laborum magni eligendi quae pariatur?
+   Corrupti possimus eos aliquid tempora facere repudiandae beatae molestias ratione, ipsum facilis magni ex unde dolorem consequuntur architecto minima esse quam enim, quo non suscipit est? Accusantium explicabo eligendi sunt.
+   Fugit, distinctio libero dolorem, deserunt deleniti aut placeat quod quisquam vel tempore, veritatis totam. Ea alias saepe, accusantium, dicta voluptatum fugit architecto dolores at officia quia voluptatem dolorem qui! Distinctio.
+   Fuga amet molestiae aut praesentium vel recusandae odit nam consectetur et doloribus at, libero sapiente! Nesciunt, totam nostrum accusamus libero modi ipsam. Esse corrupti, dolores placeat sit enim nobis eos.
+   Officia dolorum non cupiditate ullam ipsa. Nisi, porro quisquam quaerat aspernatur dolores a ducimus inventore, doloremque numquam repellendus minima eum est, consequuntur amet dicta quo. Sit inventore incidunt voluptas porro?
+   Vel voluptate reiciendis iste, minima quos libero doloremque asperiores facere laudantium sint repellendus eveniet omnis ipsa maiores temporibus tempore nemo placeat magnam minus fuga mollitia non aliquam. Temporibus, alias ad.
+   Voluptatibus est natus iusto reiciendis fuga similique atque laborum culpa distinctio dicta fugiat in magnam qui, numquam quia sed illo explicabo? Minus consequatur minima, mollitia rem adipisci quia nostrum! Assumenda.</p>
+
+  </main>
+
+  <div class="ad">
+    <p>광고이미지</p>
+  </div>
+
+</body>
+</html>

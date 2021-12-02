@@ -23,12 +23,14 @@ a  {
 
 header {
 	border-bottom-style : solid;
-	border-bottom-width : 1px;	
+	border-bottom-width : 1px;
+  /* border: 1px solid black;	 */
 }
 
 nav ul {
 	border-style : dotted;
 	border-width : 1px;
+  /* border:1px solid black; */
 }
 
 footer {

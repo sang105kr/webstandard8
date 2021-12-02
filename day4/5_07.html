@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>visibility 프로퍼티</title>
+	<style>
+		span {	visibility: hidden; }
+	</style>
+	<script>
+	function showAnswer() {
+		//spanArray는 span태그의 컬렉션
+		var spanArray = document.getElementsByTagName("span");
+		for(var i=0; i<spanArray.length; i++) {
+			spanArray[i].style.visibility = "visible";
+		}
+	}
+	function hideAnswer() {
+		//spanArray는 span태그의 컬렉션
+		var spanArray = document.getElementsByTagName("span");
+		for(var i=0; i<spanArray.length; i++) {
+			spanArray[i].style.visibility = "hidden";
+		}
+	}
+	</script>
+</head>
+<body>
+	<h3>다음 빈 곳에 숨은 단어?<br><br>
+	<input type="button" onclick="showAnswer()" value="보이기">
+	<input type="button" onclick="hideAnswer()" value="숨기기">
+	</h3>
+	<hr>
+	<ul>
+		<li>I (<span>love</span>) you.
+		<li>CSS is Cascading (<span>Style</span>) Sheet.
+		<li>응답하라 (<span>1988</span>).
+	</ul>
+</body>
+</html>
