@@ -1,0 +1,51 @@
+@charset "utf-8";
+html, body {
+	margin: 0;
+	height: 100%;
+}
+
+h1 {
+	margin: 0px;
+	text-align : center;
+}
+
+h2 {
+	text-shadow : 3px 3px 5px skyblue;
+	color : blue;	
+}
+p {
+	font-family : "휴먼편지체";
+	font-size : 1em;
+	text-indent : 1em;
+}
+a  {
+	text-decoration : none; 
+}
+
+header {
+	height: 15%;
+	background-color : yellow;
+	overflow: hidden; /* 브라우저 크기를 작게하여 넘치게 되면 보이지 않도록 */
+}
+
+nav{
+	width: 20%; height: 75%;
+	background-color: orange;
+	float: left;
+	overflow: hidden; /* 브라우저 크기를 작게하여 넘치게 되면 보이지 않도록 */
+}
+
+section {
+	width : 80%; height : 75%;
+	background : lightblue;
+	float: left;
+	overflow: hidden; /* 브라우저 크기를 작게하여  넘치게 되면 보이지 않도록 */
+}
+
+footer {
+	height : 10%; 
+	background-color: plum;
+  clear: left;
+	 overflow: hidden; /* 브라우저 크기를 작게하여  넘치게 되면 보이지 않도록 */
+}
+
