@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var x1 = 10;
+    let x2 = 20;
+    const x3 = 30;
+
+    const z = sum;
+    console.log(z(10,20));
+
+    const y = sum(10,20);
+    console.log(y);
+
+    function sum(v1,v2){
+      return v1+v2;
+    }
+
+    const person = {
+      name:'홍길동',
+      age : 30,
+      // smile : smile,
+      smile: function (){
+               console.log('웃다');
+             },
+      //eat : eat
+      eat: function (){
+              console.log('먹다');
+           }
+    }
+    // function smile(){
+    //   console.log('웃다');
+    // }
+    // function eat(){
+    //   console.log('먹다');
+    // }
+    person.smile();
+    person.eat();
+    console.log("이름="+person.name);
+    console.log("나이="+person.age);
+  </script>
+</body>
+</html>

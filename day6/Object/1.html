@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* new Object()로 객체 만들기 */
+    const person = new Object();  //빈객체 생성
+    person.name = '홍길동';
+    person.age = 30;
+    person.smile = smile;
+    person.eat = eat;
+
+    function smile(){
+      console.log(this.name + '가 웃다');
+    }
+
+    function eat(){
+      console.log(this.name + '가 먹다');
+    }
+    
+    person.smile();
+    person.eat(); 
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function big(str1, str2){
+      const num1 = window.parseInt(str1);
+      const num2 = window.parseInt(str2);
+
+      let max = null;
+      if(num1 >= num2){
+        max = num1;
+      }else{
+        max = num2;
+      }
+      return max;
+    }
+    function big2(str1, str2){
+      const num1 = window.parseInt(str1);
+      const num2 = window.parseInt(str2);
+      
+      // let max = (num1 >= num2) ? num1 : num2;
+      // return max;
+      return (num1 >= num2) ? num1 : num2;
+    }
+  </script>
+  <script>
+    const b = big2("625","555");
+    document.write("큰수=" + b);
+  </script>
+</body>
+</html>

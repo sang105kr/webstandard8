@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>별 문자 출력하기</h3>
+  <hr>
+  <script>
+    //정수입력받기
+    const num = window.prompt('정수를 입력하세요');
+    // console.log("num="+num);
+    //문자열 정수 변환
+    // const count = window.parseInt(num);
+    console.log("count="+count);
+
+    //별 출력호출
+    printStar(count);
+
+    //별 출력
+    function printStar(count){
+      //입력값 유효성 검증
+      if(window.isNaN(count)){
+        window.document.write('입력 오류 입니다');
+        return;
+      }
+
+      //별 출력하기
+      for(let i=1; i<=count; i++){
+        for(let j=1; j<=i; j++){
+          window.document.write("*");
+        }
+        window.document.write("<br>");
+      }
+    }
+  </script>
+</body>
+</html>

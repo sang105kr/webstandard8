@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1) 함수 선언문
+    function sum(v1,v2){
+      return v1+v2;
+    }
+    console.log(sum(10,20)); //함수호출
+    const s = sum;           //함수객체 참조 할당;
+    console.log(s(10,20));
+
+    //2) 함수 표현식
+    const sum2 = function(v1,v2){
+      return v1+v2;
+    }
+    console.log(sum2(10,20));
+
+    //3) 화살표함수(람다식)
+    // const sum3 = (v1,v2)=>{
+    //   return v1+v2;
+    // }
+    //바디에 실행문이 1개 존재하면 중괄호생략가능, return문 생략가능.
+    //매개변수가 1개인경우 소괄호 생략가능
+    const sum3 = (v1,v2)=>v1+v2; 
+    console.log(sum3(10,20));
+
+    //4)생성자함수
+    function Person(name,age){
+      this.name = name;
+      this.age = age;
+    }
+    Person('홍길동',20);      //함수 호출
+    new Person('홍길동',30);  //객체 생성
+
+  </script>
+</body>
+</html>

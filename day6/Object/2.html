@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 리터럴 표기법{}로 객체 만들기 */
+    //case1) 동적으로 property추가
+    const person = {};  //빈객체 생성
+    person.name = '홍길동';
+    person.age = 30;
+    person.smile = function (){
+      console.log(this.name + '가 웃다');
+    };
+    person.eat = function (){
+      console.log(this.name + '가 먹다');
+    };
+
+    person.smile();
+    person.eat(); 
+    console.log(person.name);
+    console.log(person.age);
+
+    console.log('----------------------------')
+    //case2) 정적으로 property추가
+    const person2 = {
+      name : '홍길동',
+      age : 30,
+      smile : function (){
+        console.log(this.name + '가 웃다');
+      },
+      eat : function() {
+        console.log(this.name + '가 먹다');
+      }    
+    };
+    person2.smile();
+    person2.eat(); 
+    console.log(person2.name);
+    console.log(person2.age);
+  </script>
+</body>
+</html>

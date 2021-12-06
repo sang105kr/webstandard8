@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 생성자 함수를 객체 만들기 <== 지양해야하는 코드*/
+    /* 생성자 함수를 통해 생성된 인스턴스마디 개별 인스턴스 메소드를 갖는다. */
+    function Person(name, age){
+      this.name = name;
+      this.age = age;
+
+      this.smile = function(){
+        console.log(this.name + '가 웃다');
+      }
+      this.eat = function(){
+        console.log(this.name + '가 먹다');
+      }
+    } 
+
+    const p1 = new Person('홍길동',30);
+    p1.smile();
+    p1.eat();
+
+    const p2 = new Person('홍길서',40);
+    p2.smile();
+    p2.eat(); 
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * { outline:1px solid red;} */
+    body{ margin:0}
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width:800px; margin:0 auto;
+    }
+
+    /* uppermost menu */
+    .container-upm {
+      width:100%; height:50px;
+      background-color: #845EC2;
+    }
+
+    /* header */
+    .container-h {
+      width:100%; height:250px;
+      text-align: center;
+      /* background-color: #D65DB1; */
+      background-image: url("https://cdn.pixabay.com/photo/2016/12/04/21/22/snowman-1882635_960_720.jpg");
+      background-position: center;
+      background-size: 100% 250px;
+      background-repeat: no-repeat;
+    }
+
+    /* nav */
+    .nav {
+      background-color: #FF6F91;
+    }
+    .container-n{
+      height: 50px;
+    }
+    .container-n ul {
+      margin:0; padding:0;
+      list-style: none;
+    }
+    .container-n ul li {
+      display: inline-block;
+    }
+    .container-n ul li a {
+      line-height: 50px;
+      color:white;
+      padding: 0 10px;
+    }
+    .container-n ul li:hover {
+      background-color: violet;
+    }
+    
+    /* main */
+    .main{
+      background-color: #eee;
+    }
+    .container-sc {
+      text-align: center;
+      outline: 5px solid red;
+      overflow: auto; /* 자식 엘리먼트가 z축으로 이동할때도 인식하기위함  */
+    }
+
+    .container-sc .sidebar{
+      float:left;
+      width:30%;
+      height:300px;
+      background-color: #FF9671;
+    }
+    .container-sc .content{
+      float:right;
+      width:70%;
+      height:300px;
+      background-color: #FFC75F;
+    }
+
+    /* footer */
+    .container-f {
+      width:100%;
+      height:150px;
+      text-align: center;
+      clear:both;
+      background-color: #F9F871;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="uppermost">
+    <div class="container container-upm">Log-in &nbsp; | &nbsp; Event Sale</div>
+  </div><!-- uppermost menu -->
+
+  <div class="header">
+    <div class="container container-h">header</div>
+  </div><!-- //header -->
+
+  <div class="nav">
+    <div class="container container-n">
+      <ul>
+        <li><a href="#">menu1</a></li>
+        <li><a href="#">menu2</a></li>
+        <li><a href="#">menu3</a></li>
+        <li><a href="#">menu4</a></li>
+        <li><a href="#">menu5</a></li>
+      </ul>
+    </div>
+  </div><!-- //nav -->
+
+  <div class="main">
+    <div class="container container-sc">
+      <div class="sidebar">sidebar</div>
+      <div class="content">content</div>
+    </div>
+  </div><!-- //main -->
+
+  <!-- <div class="clear"></div> -->
+  <div class="footer">
+    <div class="container container-f">footer</div>
+  </div><!-- //footer -->
+</body>
+</html>

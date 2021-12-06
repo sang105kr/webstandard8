@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=s, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 생성자 함수 */
+    function Person(name,age){
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.smile = function(){
+      console.log(this.name + '가 웃다');
+    }
+    Person.prototype.eat = function(){
+      console.log(this.name + '가 먹다');
+    }
+
+    const p = new Person("홍길동",20);
+    p.smile();
+    p.eat();
+    const p2 = new Person("홍길서",30);
+    p2.smile();
+    p2.eat();
+    const p3 = new Person("홍길남",40);
+    p3.smile();
+    p3.eat();
+
+
+    const p4 = {
+      name:"홍길북",
+      age:50,
+      smile : function (){
+        console.log(this.name + '가 웃다');
+      },
+      eat : function(){
+        console.log(this.name + '가 먹다')
+      }
+    }
+    p4.smile();
+    p4.eat();
+
+    const p5 = {
+      name:"홍길북2",
+      age:60,
+      smile : function (){
+        console.log(this.name + '가 웃다');
+      },
+      eat : function(){
+        console.log(this.name + '가 먹다')
+      }
+    }
+    p5.smile();
+    p5.eat();
+  </script>
+</body>
+</html>

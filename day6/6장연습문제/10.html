@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const box = new Object();
+    box.color = 'red';
+    box.size = 10;
+    box.amount = 0;
+    box.fill = function(){
+      this.amount += 2;
+    }
+    box.consume = function(){
+      this.amount -= 2;
+    }
+
+    box.fill();
+    document.write(box.amount);
+    document.write("<br>");
+    box.consume();
+    document.write(box.amount);
+
+  </script>
+</body>
+</html>

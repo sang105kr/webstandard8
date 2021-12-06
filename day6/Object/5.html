@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* class 문법을 사용해서 객체 만들기 js6 이상 문법에서 적용 */
+    class Person {
+      constructor(name, age){
+        this.name = name;
+        this.age = age;
+      }
+
+      smile() {
+        console.log(this.name + '가 웃다');
+      }
+      eat() {
+        console.log(this.name + '가 먹다');
+      }
+    }
+
+    const p1 = new Person('홍길동',30);
+    p1.smile();
+    p1.eat();
+    const p2 = new Person('홍길서',40);
+    p2.smile();
+    p2.eat();
+
+  </script>
+</body>
+</html>
