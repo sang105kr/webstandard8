@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function add(){
+      const $inputs = document.querySelectorAll('input');
+      console.log($inputs);
+      const result = parseInt($inputs[0].value) + parseInt($inputs[1].value);
+      console.log(result);
+      const $span = document.getElementById('result');
+      $span.innerHTML = result;
+    }
+    function cancle(){
+      const $span = document.getElementById('result');
+      $span.innerHTML = "";
+    }
+    function change(obj){
+      obj.style.backgroundColor = 'pink';
+    }
+    function change2(obj){
+      obj.style.backgroundColor = 'transparent';
+    }
+  </script>
+</head>
+<body>
+  <form action="">
+    <div><input type="text" onfocus="change(this)" onfocusout="change2(this)"> + <input type="text" onfocus="change(this)"> = <span id="result"></span></div>
+    <div>
+      <input type="button" value="정답" onclick="add()">
+      <input type="reset" value="취소" onclick="cancle()">
+    </div>
+  </form>
+</body>
+</html>

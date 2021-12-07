@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 버킷 리스트</title>
+</head>
+<style>
+    input[type='text'] {
+        width: 520px;
+        height: 1.8em;
+        font-size: 1.2em;
+        border: 3px solid gray;
+        margin:15px 0 0 15px;
+        padding:5px 20px;
+        border-radius: 10px 0 10px 0;
+    }
+    
+    form {
+        width : 700px;
+        margin : 0px auto;
+        padding-right: 0px;
+        padding-bottom: 5px;
+        
+        border-collapse: collapse;
+        background-color:lightsalmon;
+        border-radius: 20px 5px 5px 5px;
+    }
+    .btn {        
+        height: 1.5em;
+        border:none;
+        background: none;
+        color:khaki;
+        float: right;
+        padding:0px;
+        margin-right: 10px;
+        
+    }
+    
+    .node {        
+        margin:0px;
+        padding: 0.5em 0em 0.5em 2em;
+        background-color:khaki;
+        margin:0px 5px;
+        font-weight: 900;
+        border-bottom: 1px solid gray;
+        opacity: 90%;
+    }
+    .node:hover {
+        background-color:grey;
+        position:relative;
+        left: -5px;
+        top:-5px;
+
+        
+    }
+    div#container {
+        display: inline-block;
+        width :700px;
+        margin: 0px, auto;
+    }   
+</style>
+
+
+<body>
+    <h1>나만의 버킷 리스트 만들기</h1>
+    <hr>
+    <br>
+    
+    <form action="#" id="inputform" >        
+        <input type="text" id='inp' name="input" value="">
+        <input type="submit" id="addbtn" value="등록" onclick="add()" style="width: 80px; height:2em; margin-left:10px;padding:0px; border-radius: 10px; border:none;font-size:1em">  
+        
+        <br>
+        <br>
+
+        <div id='container' style="margin:0px auto"></div>   
+    </form>    
+
+    <script>
+              
+        var arrayList = new Array();
+        arrayList[0] = 'HTML 마스터하기';
+        arrayList[1] = 'CSS 마스터하기';
+        arrayList[2] = 'JavaScript 마스터하기';
+        arrayList[3] = 'Java 마스터하기';
+        arrayList[4] = 'DataBase 마스터하기';
+        arrayList[5] = 'jsp 마스터하기';
+        arrayList[6] = 'Java Swing 마스터하기';
+        dsp();        
+
+        function dsp() { //리스트 보이기
+        var dspdiv= document.getElementById("container");
+        dspdiv.innerHTML=""; 
+        var txt;
+            for(var i=0; i<arrayList.length; i++) {             
+            txt = i+". "+ arrayList[i];     
+
+            var newc=document.createElement("div");        
+            newc.setAttribute("class", "no"+i);
+            newc.setAttribute("class", "node");           
+            
+            newc.innerHTML = txt + "<button id='delete' class='btn' onclick='del("+i+")'><삭제></button><button id='modify' class='btn' onclick='mod("+i+")'><수정>&nbsp&nbsp|</button>";            
+
+            dspdiv.appendChild(newc);
+            document.getElementById("inp").value="";
+            }        
+        };
+
+
+        function add() {//추가 
+            text = document.getElementById("inp").value;
+        if(text !="") {
+            
+            arrayList.push(text);   
+            } else {
+               
+            }           
+        
+            dsp();
+        };
+
+            
+        function mod(i) {//수정            
+            
+            var n = prompt("수정하세요",arrayList[i]);
+            if(n == "" | n==null) {
+                alert("뭐라도 쓰세요");
+            } else {
+                if(arrayList[i] == n) {
+                    alert("뭐라도 쓰세요");
+                } else {
+                    arrayList[i].delete;   
+                arrayList[i]=n;
+                alert(i+"번 수정됨");
+                
+            dsp();   
+                }
+                
+            }
+              
+        };
+
+        function del(i) {//삭제
+            
+            arrayList.splice(i,1);
+            
+            dsp();
+        };
+    </script>
+</body>
+</html>

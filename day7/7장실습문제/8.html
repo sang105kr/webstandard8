@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body { margin:0;}
+    div {
+      box-sizing: border-box;
+      display: inline-block;
+      width:25%; height:50px;
+      text-align: center;
+      padding:10px;
+      float:left;
+    }
+  </style>
+</head>
+<body>
+  <h3>16개의 랜덤한 색 만들기</h3>
+  <hr>
+  <script>
+    function makeColor(){
+      const r = Math.floor(Math.random()*256);
+      const g = Math.floor(Math.random()*256);
+      const b = Math.floor(Math.random()*256);
+      return 'rgb('+r+','+g+','+b+')';
+    }
+
+    for(let i=0; i<16; i++){
+      let divTag = '<div style="background-color:';
+      const color = makeColor();
+      divTag += color;
+      divTag += '">'+color+'</div>';
+      document.write(divTag);
+    }
+  </script>
+  <!-- <div style="background-color:rgb(255,0,0)">rgb(1,2,3)</div>
+    <div style="background-color: green;">rgb(1,2,3)</div>
+  <div style="background-color: pink;">rgb(1,2,3)</div>
+  <div style="background-color: orange;">rgb(1,2,3)</div>
+  <div style="background-color: yellow;">rgb(1,2,3)</div>
+  <div style="background-color: green;">rgb(1,2,3)</div>
+  <div style="background-color: pink;">rgb(1,2,3)</div>
+  <div style="background-color: orange;">rgb(1,2,3)</div>
+  <div style="background-color: yellow;">rgb(1,2,3)</div>
+  <div style="background-color: green;">rgb(1,2,3)</div>
+  <div style="background-color: pink;">rgb(1,2,3)</div>
+  <div style="background-color: orange;">rgb(1,2,3)</div>
+  <div style="background-color: yellow;">rgb(1,2,3)</div>
+  <div style="background-color: green;">rgb(1,2,3)</div>
+  <div style="background-color: pink;">rgb(1,2,3)</div>
+  <div style="background-color: orange;">rgb(1,2,3)</div> -->
+</body>
+</html>
