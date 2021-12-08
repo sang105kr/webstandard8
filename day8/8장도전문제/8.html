@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      background-color: pink;
+      opacity: 0.5;
+    }
+    table tr > td{ 
+      font-size: 3em;
+      font-weight: bolder;
+    }
+    #msg {
+      color : red;
+    }
+  </style>
+</head>
+<body>
+  <h3>갬블링 게임</h3>
+  <p>각 숫자를 클릭하면 0에서 2사이의 나누로 바뀝니다. 모두 같은 수가 나오면 승리합니다.</p>
+  <hr>
+  <table>
+    <tr>
+      <td id="num1" onclick="changeNum(this)">0</td>
+      <td id="num2" onclick="changeNum(this)">0</td>
+      <td id="num3" onclick="changeNum(this)">0</td>
+    </tr>
+  </table>
+  <p id="msg" onclick="reset()"></p>
+  <script>
+
+    const $msg = document.getElementById('msg');
+    
+    function changeNum(obj){
+      const num = genRandom(3);
+      obj.innerHTML = num;
+
+      //3번째 숫자 클릭시 3개의 숫자를 검사혀여 모두 같으면 성공 체크
+      if(obj.id == 'num3'){
+        const num1 = parseInt(document.getElementById('num1').innerHTML);
+        const num2 = parseInt(document.getElementById('num2').innerHTML);
+        const num3 = parseInt(obj.innerHTML);
+
+        if(num1 == num2 && num2 == num3){
+          $msg.innerHTML = 'Success(click heer ot do again)';
+        }else{
+          $msg.innerHTML = 'Fail(click heer ot do again)';
+        }
+      }      
+    }
+
+    /* 0~n까저의 정수 난수 발생 */
+    function genRandom(n){
+      return Math.floor(Math.random()*n);
+    }
+
+
+    //게임 초기화
+    function reset(){
+      const $tdTags = document.querySelectorAll('table tr td');
+      console.log($tdTags);
+      //숫자 초기화
+      for(let i=0; i<$tdTags.length; i++){
+        $tdTags[i].innerHTML = 0;
+      }
+      //메세지 초기화
+      $msg.innerHTML = '';
+    }
+  </script>
+</body>
+</html>

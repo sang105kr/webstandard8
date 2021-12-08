@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM객체 동적 삽입</title>
+  <script>
+    function addAnswer(obj, text){
+      //<button>의 부모요소 타게팅
+      const $parent = obj.parentElement;
+
+      //부모요소(<div>)의 마지막 태그가 <button>이 아닌 경우는 <p>태그 추가(X)
+      if(obj != $parent.lastElementChild) {
+        return;
+      }
+
+      // <p>태그 생성
+      const $pTag = window.document.createElement('p');
+      // <p>태그의 컨텐츠 지정
+      $pTag.innerHTML = text;
+      $pTag.setAttribute("id","ans1");
+      $pTag.setAttribute("class","ans1");
+      $pTag.style.backgroundColor = 'yellow';
+      $pTag.onclick = function(){
+        alert('hello');
+      }
+
+      // <button>의 부모요소(<div>)의 자식으로 추가
+      $parent.appendChild($pTag);
+    }
+  </script>
+</head>
+<body>
+  <h3>정답의 동적 삽입</h3>
+  <hr>
+  <div>
+    <p>Q. 거울아 거울아 세상에서 누가 제일 예쁘니?</p>
+    <button onclick="addAnswer(this,'백설공주')">답보기</button>
+    <!-- <p>백설공주</p> -->
+  </div>
+  <div>
+    <p>Q. 죽느냐 사느냐 어떤 것이 문제인가?</p>
+    <button onclick="addAnswer(this,'둘다')">답보기</button>
+    <!-- <p>둘다</p>  -->
+  </div>
+</body>
+</html>

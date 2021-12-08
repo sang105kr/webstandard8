@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let n = 2;
+    function changeSize(obj){
+      //obj.style.transform = 'scale(' + n + ',1)';
+      obj.style.transform = `scale(${n++},1)`;
+    }
+  </script>
+</head>
+<body>
+  <h3>클릭하면 2,3,4배로 옆으로 늘어남니다.</h3>
+  <hr>
+  <img src="/media/8장/media/puppy.png" alt="" onclick="changeSize(this)">
+</body>
+</html>

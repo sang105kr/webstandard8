@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 연습</title>
+  <script>
+    function changeStyle(){
+      const $span = document.getElementById('mySpan');
+      $span.style.border="2px dotted violet";
+    }
+    function countPTag(){
+      const $pTags = document.querySelectorAll('p');
+      //console.log($pTags.length);
+      const msg = `<P> 태그의 갯수는 ? ${$pTags.length}`;
+      alert(msg);
+    }
+  </script>
+</head>
+<body>
+  <h3>자바스크립트란?
+    <button onclick="changeStyle()">border</button>
+    <button onclick="countPTag()">p</button>
+  </h3>
+  <hr>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos cum similique ipsa magni doloremque animi eligendi aspernatur totam, iusto fugit adipisci blanditiis maiores quasi quod quo molestias reiciendis assumenda omnis!</p>
+  <p><span id="mySpan">C언어</span>를 아는 사용자는 빠르게 학습할 수 있다</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolor illo dolorum nemo delectus maiores quas vel optio corporis architecto eaque facere, quis ab qui porro, aperiam eveniet velit quibusdam?</p>
+</body>
+</html>
