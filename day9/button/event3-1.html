@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function init(){
+      const $button = window.document.querySelector('button');
+      $button.addEventListener("click", function greet(evt){
+        console.log(evt);
+        console.log('클릭!');
+        window.alert('클릭!')
+        const $button = evt.target;
+        $button.style.backgroundColor = 'yellow';
+      });
+    });
+
+  </script>
+</head>
+<body>
+  <button>클릭</button>
+</body>
+</html>

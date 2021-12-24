@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    
+    function init(){
+      const $button = window.document.querySelector('button');
+      $button.onclick = window.greet;
+    }  
+
+    function greet(evt){
+      console.log(evt);
+      window.alert('반갑습니다');
+      console.log('반갑습니다');
+    }
+  </script>
+</head>
+<body onload = "init()">
+  <button>클릭</button>
+</body>
+</html>

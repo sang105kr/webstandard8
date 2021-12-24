@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    //화살표 함수 
+    // const greet = (evt) => {
+    //   console.log(evt);
+    //   console.log('클릭!');
+    //   window.alert('클릭!')
+    //   const $button = evt.target;
+    //   $button.style.backgroundColor = 'yellow';
+    // }
+    //화살표 함수에서 매개변수가 1개인경우 소괄호 생략가능.
+    //               매개변수가 없거나, 2개이상인 경우 소괄호 생략 불가능.
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const $button = window.document.querySelector('button');
+      $button.addEventListener("click",evt => {
+        console.log(evt);
+        console.log('클릭!');
+        window.alert('클릭!')
+        const $button = evt.target;
+        $button.style.backgroundColor = 'yellow';
+      });
+    });
+
+  </script>
+</head>
+<body>
+  <button>클릭</button>
+</body>
+</html>

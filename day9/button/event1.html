@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function greet(msg){
+      window.alert(msg);
+    }
+    function greet(evt, msg){
+      window.alert(msg);
+      console.log(evt);
+      switch(evt.type){
+        case "click": msg += '클릭'; break;
+        case "mouseover": msg += '마우스 오버'; break;
+        case "mouseout": msg += '마우스 아웃'; break;
+      }
+      console.log(msg);
+      window.alert(msg);
+    }
+  </script>
+</head>
+<body>
+  <!-- <button onclick="window.alert('반갑습니다')">클릭</button> -->
+  <button onclick="greet('반갑습니다')">클릭1</button>
+  <button onclick="greet(event,'click')">클릭2</button>
+  <button onmouseout="greet(event,'mouseout')"
+          onmouseover="greet(event,'mouseover')">클릭3</button>
+</body>
+</html>

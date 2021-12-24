@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- li요소를 클릭하면 li요소의 컨텐츠를 콘솔에 출력하기 addEventListener()메소드 사용-->
+  <script>
+    document.addEventListener("DOMContentLoaded", init);
+
+    function init(){
+      const $item1 = document.getElementById('item1');
+      const $item2 = document.getElementById('item2');
+      const $item3 = document.getElementById('item3');
+
+      $item1.addEventListener("click", handler);
+      $item2.addEventListener("click", handler);
+      $item3.addEventListener("click", handler);
+    }  
+
+    function handler(evt){
+      console.log(evt.target.innerHTML);
+      console.log(evt.target.textContent);
+    }
+
+  </script>
+</head>
+<body>
+  <ul>
+    <li id="item1">menu1<span>메뉴</span></li>
+    <li id="item2">menu2</li>
+    <li id="item3">menu3</li>
+  </ul>
+</body>
+</html>

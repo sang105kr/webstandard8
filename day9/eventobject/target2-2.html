@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul, li {outline:1px solid red;}
+  </style>
+  <!-- li요소를 클릭하면 li요소의 컨텐츠를 콘솔에 출력하기 addEventListener()메소드 사용-->
+  <script>
+    document.addEventListener("DOMContentLoaded", init);
+
+    function init(){
+      const $item = document.querySelector('ul');
+      $item.addEventListener("click", handler, true);  //캡쳐단계
+      $item.addEventListener("click", handler, false); //버블단계
+      
+    }  
+
+    function handler(evt){
+      if(evt.target.nodeName == 'LI'){
+        //console.log(evt);
+        console.log(evt.target.innerHTML);
+        console.log(evt.target.textContent);
+      }
+    }
+
+  </script>
+</head>
+<body>
+  <ul>
+    <p>test</p>
+    <li id="item1">menu1<span>메뉴</span></li>
+    <li id="item2">menu2</li>
+    <li id="item3">menu3</li>
+    <li id="item4">menu4</li>
+    <li id="item5">menu5</li>
+    <li id="item6">menu6</li>
+  </ul>
+</body>
+</html>
