@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="#">
+    <input type="radio" name="hobby" value="swiming" id="swiming">
+    <label for="swiming">수영</label>
+    <input type="radio" name="hobby" value="golf" id="golf">
+    <label for="golf">골프</label>
+    <input type="radio" name="hobby" value="climing" id="climing">
+    <label for="climing">등산</label>
+    <button id='send'>전송</button>
+  </form>
+  <script>
+    const $sendBtn = document.getElementById('send');
+    //console.log($sendBtn);
+    $sendBtn.addEventListener("click", handler, false);
+
+    function handler(evt){
+      //console.log(evt);
+      evt.preventDefault();
+      const $radioBtns = document.querySelectorAll("input[type='radio']");
+
+      let choice = null;
+      for(let i=0; i < $radioBtns.length; i++ ){
+        if($radioBtns[i].checked) {
+          choice = $radioBtns[i].value;
+          break;
+        }
+      }
+      if(choice != null) {
+        window.alert(choice + '가 선택됨!');
+      }else{
+        window.alert('취미를 선택하세요');
+      }
+    }
+  </script>
+</body>
+</html>

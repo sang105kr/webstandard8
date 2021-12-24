@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="#">
+    <input type="checkbox" name="hobby" value="swiming" id="swiming">
+    <label for="swiming">수영</label>
+    <input type="checkbox" name="hobby" value="golf" id="golf">
+    <label for="golf">골프</label>
+    <input type="checkbox" name="hobby" value="climing" id="climing">
+    <label for="climing">등산</label>
+    <button id='send'>전송</button>
+  </form>
+  <script>
+    const $sendBtn = document.getElementById('send');
+    //console.log($sendBtn);
+    $sendBtn.addEventListener("click", handler, false);
+
+    function handler(evt){
+      //console.log(evt);
+      evt.preventDefault();
+      const $checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+      let choice = [];
+      for(let i=0; i < $checkboxes.length; i++ ){
+        if($checkboxes[i].checked) {
+          choice.push($checkboxes[i].value);
+        }
+      }
+      let str = "";
+      if(choice.length > 0) {
+        for(let i=0; i<choice.length; i++){
+          if(i != choice.length - 1){
+            str += choice[i] + ',';
+          }else{
+            str += choice[i];
+          }
+        }
+        window.alert(str + '가 선택됨!');
+      }else{
+        window.alert('취미를 선택하세요');
+      }
+    }
+  </script>
+</body>
+</html>
