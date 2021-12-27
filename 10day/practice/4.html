@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      position: absolute;
+      top:100px; left:100px;
+    }
+  </style>
+</head>
+<body>
+  <h3>이미지 커서 만들기</h3>
+  <hr>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quam similique cum eaque cumque quidem voluptatibus natus accusamus repellat porro, quas earum vero possimus perferendis ab consequuntur optio odio nam.</p>
+  <button>클리어</button>
+  <div><img src="/media/9장/media/apple.png" alt="" width="30px" height="30px"></div>
+  <script>
+    window.addEventListener('mousemove',handler);
+    const $img = document.querySelector('img');
+
+    $img.addEventListener("click",createStamp); //왼쪽마우스 클릭
+    $img.addEventListener("contextmenu",removeStamp); //오른쪽마우스 클릭
+    $img.addEventListener("wheel",resizeImg); //휠마우스 위,아래 굴릴때
+
+    const $div = document.querySelector('div');
+
+    function resizeImg(evt){
+      console.log(evt);
+      //마우스 휠을 위로 굴릴때
+      if(evt.wheelDelta > 0 ) {
+        $img.width -= $img.width * 0.5;
+        $img.height -= $img.height * 0.5;
+      //마우스 휠을 아래로 굴릴때  
+      }else if(evt.wheelDelta < 0){
+        $img.width += $img.width * 0.5;
+        $img.height += $img.height * 0.5;
+      }
+    }
+
+    function removeStamp(evt){
+      evt.preventDefault();
+      console.log('클리어');
+      const $imgs = document.querySelectorAll('div img');
+      for(let i=1; i<$imgs.length; i++){
+        $div.removeChild($imgs[i]);
+      }
+    }
+
+    function createStamp(evt){
+      console.log('이미지클릭');
+      const $copyImg = $img.cloneNode(true);
+      $div.appendChild($copyImg);
+    }
+
+    function handler(evt){
+      // console.log("x="+evt.clientX);
+      // console.log("y="+evt.clientY);
+      $img.style.top = evt.clientY-($img.height/2)+"px";
+      $img.style.left = evt.clientX-($img.width/2)+"px";
+    }
+  </script>
+</body>
+</html>

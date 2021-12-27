@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>타이머해제</button>
+  <button id="naver">네이버로 이동</button>
+  <script>
+    //일정시간 지연후 실행할 코드 작성시 활용.
+    const timer = window.setTimeout(handler, 3000);
+    function handler(){
+      window.alert('hi');
+    }
+
+    const $button = document.querySelector('button');
+    $button.addEventListener("click", function(evt){
+      //setTimout해제
+      window.clearTimeout(timer);
+      console.log('타이버해제되었습니다.')
+    });
+
+    //case1)
+    document.getElementById('naver').addEventListener("click", function(){
+      window.location = 'http://www.naver.com';
+    });
+
+    //case2)
+    // naver.addEventListener("click",function(){
+    //   window.location = 'http://www.naver.com';
+    // });
+
+  </script>
+</body>
+</html>

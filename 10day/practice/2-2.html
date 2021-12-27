@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라디오 버튼을 클릭하면 이미지를 출력</title>
+  <style>
+    /* div {outline:1px solid red;} */
+  </style>
+</head>
+<body>
+  <h3>라디오 버튼을 클릭하면 이미지를 출력합니다.</h3>
+  <hr>
+  <div>
+    <input type="radio" name="fruit" value="0" id="banana"><label for="banana">바나나</label>
+    <input type="radio" name="fruit" value="1" id="mango"><label for="mango">망고</label>
+    <input type="radio" name="fruit" value="2" id="apple"><label for="apple">사과</label>
+  </div>
+  <img>
+  <script>
+
+    const arr = ['/media/9장/media/banana.png',
+                '/media/9장/media/mango.png',
+                '/media/9장/media/apple.png'];
+    const $img = document.querySelector('img');
+    $img.src = arr[2];
+
+    const $div = document.querySelector('div');
+
+    $div.addEventListener('click',handler);
+
+    function handler(evt){
+      console.log(evt);
+      console.log($img.src);
+
+      // matches(selector) : 대상객체가 셀렉터로 찾을수 있으면 true를 반환
+      if(evt.target.matches('div > input')){
+        $img.src = arr[evt.target.value];
+      }
+    }
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id='button'>클릭</button>
+  <button id='button2'>클릭</button>
+  <button id='button3' onclick="(function(){alert('one')})();">클릭</button>
+  <button id='button4' onclick="abc()">클릭</button>
+  <script>
+    const $button = document.getElementById('button');
+    $button.addEventListener('click', function(){alert('one')});
+    $button.addEventListener('click', function(){alert('two')});
+    $button.addEventListener('click', function(){alert('three')});
+
+    const $button2 = document.getElementById('button2');
+    $button2.onclick = function(){alert('one')};
+    $button2.onclick = function(){alert('two')};
+    $button2.onclick = function(){alert('tree')};
+
+    function abc(){
+      alert('one');
+    }
+    //즉시실행함수
+    const msg = 'hi';
+
+    (function(m){
+      alert('hello'+m);
+    })(msg);
+
+    (function(){
+      alert('hello');
+    }());
+
+    //abc();
+  </script>
+</body>
+</html>

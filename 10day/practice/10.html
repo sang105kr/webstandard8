@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      width:250px;
+    }
+    input[type="text"],table{
+      width: 100%;
+      box-sizing: border-box;
+    }
+    input[type="text"] {
+      text-align: right;
+    }
+    button { width:100%;}
+  </style>
+</head>
+<body>
+  <h3>계산기 만들기</h3>
+  <hr>
+  <div class="wrap">
+    <input type="text" name="" id="">
+    <table>
+      <tr>
+        <td><button id="BACK">BACK</button></td>
+        <td><button id="CE">CE</button></td>
+        <td><button id="C">C</button></td>
+        <td><button id="=">=</button></td>
+      </tr>
+      <tr>
+        <td><button id="7">7</button></td>
+        <td><button id="8">8</button></td>
+        <td><button id="9">9</button></td>
+        <td><button id="/">/</button></td>
+      </tr>
+      <tr>
+        <td><button id="4">4</button></td>
+        <td><button id="5">5</button></td>
+        <td><button id="6">6</button></td>
+        <td><button id="*">*</button></td>
+      </tr>
+      <tr>
+        <td><button id="1">1</button></td>
+        <td><button id="2">2</button></td>
+        <td><button id="3">3</button></td>
+        <td><button id="-">-</button></td>
+      </tr>
+      <tr>
+        <td><button id="0">0</button></td>
+        <td><button id="+">+</button></td>
+        <td><button>NONE</button></td>
+        <td><button>NONE</button></td>
+      </tr>
+    </table>
+    <script>
+      const $table = document.querySelector('table');
+      const $input = document.querySelector('input[type=text]');
+      $input.value = 0;
+
+      $table.addEventListener("click", handler, false);
+
+      function handler(evt){
+        
+        if(evt.target.tagName.toLowerCase() != 'button') return;
+        if(evt.target.textContent.toLowerCase() == 'none') return;
+
+        console.log(evt.target.textContent);
+        const pressedBtnOfText = evt.target.textContent.toLowerCase();
+
+        switch(pressedBtnOfText){
+          case 'back': backBtn_f(); break;
+          case 'ce':  
+          case 'c': cancelBtn_f(); break;
+          case '=': calcBtn_f(); break;
+          default : // 0~9, 4칙연산
+            console.log(pressedBtnOfText);
+            if($input.value == 0) {
+              $input.value = null;
+            }
+            $input.value += pressedBtnOfText;
+        }
+      }
+      // 최근입력값 취소
+      function backBtn_f(){
+        console.log('back');
+        $input.value = $input.value.substr(0,$input.value.length-1);
+        if($input.value.length == 0) {
+          $input.value = 0;
+        }
+      }
+      // 입력초기화
+      function cancelBtn_f(){
+        console.log('ce');
+        $input.value = 0;
+      }
+      // 계산결과
+      function calcBtn_f(){
+        console.log('=');
+        $input.value = eval($input.value);
+      }
+
+    </script>
+  </div>
+</body>
+</html>
