@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>산수 문제를 풀어봅니다.</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas nam ipsa a saepe, ipsum vel totam necessitatibus quo cum quae sint ipsam nostrum rem omnis distinctio quis nobis aut. Molestias.</p>
+  <hr>
+  <table>
+    <tr>
+      <td class="question">5*6</td>
+      <td><input type="text" class="answer" name="" id=""></td>
+    </tr>
+    <tr>
+      <td class="question">7+5*3</td>
+      <td><input type="text" class="answer" name="" id=""></td>
+    </tr>
+    <tr>
+      <td class="question">23*2</td>
+      <td><input type="text" class="answer" name="" id=""></td>
+    </tr>
+    <tr>
+      <td class="question">35-7</td>
+      <td><input type="text" class="answer" name="" id=""></td>
+    </tr>
+    <tr>
+      <td><button id="again">다시</button></td>
+      <td>
+        <span id="count">값</span>
+      </td>
+    </tr>
+  </table>
+  <script>
+
+    const $questions = window.document.querySelectorAll('table .question');
+    const $answers = window.document.querySelectorAll('table .answer');
+    const $count = window.document.getElementById('count');
+
+    let sum = 0;  //맞춘문제 갯수
+
+    const $again = window.document.getElementById('again');
+    $again.addEventListener('click', start, false);
+
+    start();
+
+    function start() {
+      //점수 초기화
+      sum = 0;
+      $count.textContent = sum;
+
+      //제출답안 초기화
+      for(let i=0; i<$answers.length; i++){
+        $answers[i].value = '';
+      }
+      
+      //문제 만들기
+      makeQuestion();
+
+      //10초뒤 채점하기
+      window.setTimeout(calculate, 1000 * 10);
+    }
+
+    //문제 만들기
+    function makeQuestion(evt){
+
+      const operator = ['+','-','*','/'];
+      
+      for(let i=0; i < $questions.length; i++) {
+        const op1 = Math.floor(Math.random()*100); // 0~99사이의 랜덤한 정수 발생
+        const op2 = Math.floor(Math.random()*100); // 0~99사이의 랜덤한 정수 발생
+        const choicedOperator = Math.floor( Math.random() * operator.length ); // 4칙 연산자 랜덤 
+
+        const expression = op1 + operator[choicedOperator] + op2;   // 수식
+
+        $questions[i].style.textDecoration = 'none';
+        $questions[i].textContent = expression;
+      }  
+
+    }
+
+    //채점하기
+    function calculate(evt){
+      
+      //채점
+      for(let i=0; i < $questions.length; i++) {
+        
+        //정답이면
+        if(window.eval($questions[i].textContent) == window.parseInt($answers[i].value)){
+          sum++;
+          
+          //틀린답이면  
+        }else{
+          $questions[i].style.textDecoration = 'line-through';
+        }
+      }    
+      //채점결과
+      $count.textContent = sum;
+    }
+  </script>
+</body>
+</html>

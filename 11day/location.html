@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>window.location으로 웹 사이트 접속</h3>
+  <hr>
+  사이트 선택 :
+  <select id="site">
+    <option value="http://www.naver.com" selected>네이버
+    <option value="http://www.google.com">구글
+    <option value="http://www.microsoft.com">마이크로소프트
+  </select>
+  <p>
+  <script>
+
+    const $site = document.getElementById('site');
+    $site.addEventListener("change", handler, false);
+
+    function handler(evt){
+      console.log('콤보박스 선택 변경됨!');
+      console.log($site.selectedIndex);
+      console.log($site.options);
+      const win = window.open(null, 
+                              'mywin', 
+                              'right=0, top=0,width=300,height=300');
+      win.location=$site.options[$site.selectedIndex].value;
+    }
+  </script>      
+</body>
+</html>
