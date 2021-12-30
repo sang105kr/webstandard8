@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" name="menu" id="menu"><button id="addBtn">추가</button>
+  <ul class="buketList">
+    <li class="item item1" id="id1">
+      menu1 
+      <button class='delBtn'>삭제</button>
+      <button class="up">위로</button>
+      <button class="down">아래로</button>
+    </li>
+    <li class="item item2" id="id2">
+      menu2 
+      <button class='delBtn'>삭제</button>
+      <button class="up">위로</button>
+      <button class="down">아래로</button>
+    </li>
+    <li class="item item3" id="id3">
+      menu3 
+      <button class='delBtn'>삭제</button>
+      <button class="up">위로</button>
+      <button class="down">아래로</button>
+    </li>
+  </ul>
+  <script>
+    const $buketList = document.querySelector('.buketList');
+
+    $buketList?.addEventListener('click', click_f, false);
+    addBtn?.addEventListener('click', add_f, false);
+    menu?.addEventListener('keyup', add_f, false);
+
+    function click_f(evt){
+      //삭제버튼 클릭시
+      if(evt.target.classList.contains('delBtn')){
+        console.log(evt);
+        //자식요소찾기
+        const $child = evt.target.closest('li');
+        //자식요소 제거하기
+        if($child){
+          if(confirm('삭제하시겠습니까?')){
+            $buketList.removeChild($child);
+          }
+        }
+      }
+    }
+
+    function add_f(evt){
+      console.log(evt);
+      //필수 입력체크
+      if(!menu.value.trim().length) {
+        menu.value = '';
+        menu.focus();
+        return;
+      }
+
+      //입력필드에 엔터키를 눌렀거나 삭제버튼 클릭이 아니면 실행 안함.
+      if(!((evt.target.tagName.toLowerCase() == 'input' && 
+           evt.type == 'keyup' && 
+           evt.key.toLowerCase() == 'enter') || (evt.target.nodeName.toLowerCase() == 'button'))) {
+           return;
+      }
+
+      //1) 요소(element)생성
+      const $li = document.createElement('li');  // <li></li>
+      const $delBtn = document.createElement('button');
+      const $upBtn = document.createElement('button');
+      const $downBtn = document.createElement('button');
+      console.log($li);
+
+      //2) 속성 추가
+      $li.setAttribute('class','item item3');
+      $li.setAttribute('id','id3');
+      $delBtn.setAttribute('class','delBtn');
+      $upBtn.setAttribute('class','upBtn');
+      $downBtn.setAttribute('class','downBtn');
+      console.log($li);
+
+      //3) 컨텐츠추가
+      $li.textContent = menu.value;
+      $delBtn.textContent = '삭제';
+      $upBtn.textContent = '위로';
+      $downBtn.textContent = '아래로';
+      console.log($li);
+
+      //4) 부모요소에 자식요소로 추가
+      //const $parent = document.querySelector('ul.wrap');
+      $li.appendChild($delBtn);
+      $li.appendChild($upBtn);
+      $li.appendChild($downBtn);
+      $buketList.appendChild($li);
+    }
+  </script>
+</body>
+</html>
