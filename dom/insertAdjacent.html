@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>insertAdjacentHTML : 시작,종료태그 전후에 요소를 삽입하고자 할때</title>
+</head>
+<body>
+  <!--innerHTML(text+html), textContent(text), insertAdjacentHTML(시작,종료테그 전후에 text+html삽입)-->
+  <!--beforebegin-->
+  <div class="foo">
+    <!--afterbegin-->
+    text
+    <!--beforeend-->
+  </div>
+  <!--afterend-->
+  <script>
+    const $foo = document.querySelector('div.foo');
+
+    $foo.insertAdjacentHTML('beforebegin','<p>beforebegin</p>');
+    $foo.insertAdjacentHTML('afterbegin','<p>afterbegin</p>');
+    $foo.insertAdjacentHTML('beforeend','<p>beforeend</p>');
+    $foo.insertAdjacentHTML('afterend','<p>afterend</p>');
+  </script>
+
+</body>
+</html>

@@ -8,45 +8,88 @@
 </head>
 <body>
   <input type="text" name="menu" id="menu"><button id="addBtn">추가</button>
-  <ul class="buketList">
-    <li class="item item1" id="id1">
+  <ol class="buketList">
+    <!-- <li class="item item1" id="id1">
       menu1 
       <button class='delBtn'>삭제</button>
-      <button class="up">위로</button>
-      <button class="down">아래로</button>
+      <button class="upBtn">위로</button>
+      <button class="downBtn">아래로</button>
+      <button class="topBtn">처음으로</button>
+      <button class="bottomBtn">마지막로</button>
     </li>
     <li class="item item2" id="id2">
       menu2 
       <button class='delBtn'>삭제</button>
-      <button class="up">위로</button>
-      <button class="down">아래로</button>
+      <button class="upBtn">위로</button>
+      <button class="downBtn">아래로</button>
+      <button class="topBtn">처음으로</button>
+      <button class="bottomBtn">마지막로</button>      
     </li>
     <li class="item item3" id="id3">
       menu3 
       <button class='delBtn'>삭제</button>
-      <button class="up">위로</button>
-      <button class="down">아래로</button>
-    </li>
-  </ul>
+      <button class="upBtn">위로</button>
+      <button class="downBtn">아래로</button>
+      <button class="topBtn">처음으로</button>
+      <button class="bottomBtn">마지막로</button>      
+    </li> -->
+  </ol>
   <script>
     const $buketList = document.querySelector('.buketList');
 
-    $buketList?.addEventListener('click', click_f, false);
-    addBtn?.addEventListener('click', add_f, false);
-    menu?.addEventListener('keyup', add_f, false);
+    $buketList?.addEventListener('click', click_f, false); //ul 박스영역의 클릭이벤트 감지
+    addBtn?.addEventListener('click', add_f, false); //항목 추가
+    menu?.addEventListener('keyup', add_f, false);   //Enter키에 반응
+
+    
+    list(); // 버킷리스트 목록출력하기
 
     function click_f(evt){
+
+      const $parent = document.querySelector('.buketList');
+
+      //요소.closest(셀렉터) : 이벤트가 발생된 요소로부터 상위 요소탐색
+      const $toMove = evt.target.closest('li');
+
       //삭제버튼 클릭시
-      if(evt.target.classList.contains('delBtn')){
-        console.log(evt);
-        //자식요소찾기
-        const $child = evt.target.closest('li');
+      if(evt.target.matches('.delBtn')){
+        //console.log(evt);
+
         //자식요소 제거하기
-        if($child){
+        if($toMove){
           if(confirm('삭제하시겠습니까?')){
-            $buketList.removeChild($child);
+            $parent.removeChild($toMove);
+            console.log($toMove.dataset.key);
+            localStorage.removeItem($toMove.dataset.key);
           }
         }
+      //위로버튼 클릭시  
+      }else if(evt.target.matches('.upBtn')){
+        
+        const $target = $toMove.previousElementSibling;
+        $parent.insertBefore($toMove, $target);
+
+      //아래로버튼 클릭시  
+      }else if(evt.target.matches('.downBtn')){
+
+        const $target = $toMove.nextElementSibling;
+        if($target){
+          $target.insertAdjacentElement('afterend',$toMove);
+
+        }else{
+          //마지막 요소인경우 처음으로 이동
+          $parent.insertBefore($toMove,$parent.firstChild);
+        }
+      //처음으로 버튼 클릭시  
+      }else if(evt.target.matches('.topBtn')){
+
+        $parent.insertBefore($toMove,$parent.firstChild);
+
+      //마지막으로 버튼 클릭시
+      }else if(evt.target.matches('.bottomBtn')){
+ 
+        $parent.insertBefore($toMove, null); // $parent.appendChild($toMove); 와 동일
+
       }
     }
 
@@ -71,14 +114,20 @@
       const $delBtn = document.createElement('button');
       const $upBtn = document.createElement('button');
       const $downBtn = document.createElement('button');
+      const $topBtn = document.createElement('button');
+      const $bottomBtn = document.createElement('button');
       console.log($li);
 
       //2) 속성 추가
       $li.setAttribute('class','item item3');
       $li.setAttribute('id','id3');
+      $li.setAttribute('data-key', new Date().toLocaleString());
+
       $delBtn.setAttribute('class','delBtn');
       $upBtn.setAttribute('class','upBtn');
       $downBtn.setAttribute('class','downBtn');
+      $topBtn.setAttribute('class','topBtn');
+      $bottomBtn.setAttribute('class','bottomBtn');
       console.log($li);
 
       //3) 컨텐츠추가
@@ -86,14 +135,66 @@
       $delBtn.textContent = '삭제';
       $upBtn.textContent = '위로';
       $downBtn.textContent = '아래로';
+      $topBtn.textContent = '처음으로';
+      $bottomBtn.textContent = '마지막으로';
       console.log($li);
 
       //4) 부모요소에 자식요소로 추가
-      //const $parent = document.querySelector('ul.wrap');
       $li.appendChild($delBtn);
       $li.appendChild($upBtn);
       $li.appendChild($downBtn);
+      $li.appendChild($topBtn);
+      $li.appendChild($bottomBtn);
+
+      //5) dom트리에 추가
       $buketList.appendChild($li);
+
+      //6) 로컬 저장소에 저장
+      const currTime = new Date().toLocaleString();
+      window.localStorage.setItem( currTime ,menu.value);
+    }
+
+    // 저장소의 데이터 읽어와서 버킷리스트 출력하기
+    function list(){
+      //서브 dom생성
+      const $fragment = document.createDocumentFragment();
+
+      for(let i=0; i<localStorage.length; i++){
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        console.log(key, value);
+
+        const $li = document.createElement('li');
+        const $delBtn = document.createElement('button');
+        const $upBtn = document.createElement('button');
+        const $downBtn = document.createElement('button');
+        const $topBtn = document.createElement('button');
+        const $bottomBtn = document.createElement('button');
+
+        $li.setAttribute('data-key', key);
+        $li.textContent = value;
+
+        $delBtn.setAttribute('class','delBtn');
+        $upBtn.setAttribute('class','upBtn');
+        $downBtn.setAttribute('class','downBtn');
+        $topBtn.setAttribute('class','topBtn');
+        $bottomBtn.setAttribute('class','bottomBtn');
+
+        $delBtn.textContent = '삭제';
+        $upBtn.textContent = '위로';
+        $downBtn.textContent = '아래로';
+        $topBtn.textContent = '처음으로';
+        $bottomBtn.textContent = '마지막으로';
+
+        $li.appendChild($delBtn);
+        $li.appendChild($upBtn);
+        $li.appendChild($downBtn);
+        $li.appendChild($topBtn);
+        $li.appendChild($bottomBtn);
+
+        $fragment.appendChild($li);
+      }
+      $buketList.appendChild($fragment);
     }
   </script>
 </body>

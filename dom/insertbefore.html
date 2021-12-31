@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>appendChild, insertBefore연습</title>
+</head>
+<body>
+  <ul>
+    <li class="item1">menu1</li>
+    <li class="item2">menu2</li>
+    <li class="item3">menu3</li>
+  </ul>
+  <script>
+    //1)menu4를 menu3아래로 추가하기
+    // 부모요소.appendChild(자식요소);
+    {
+      const $li = document.createElement('li');
+      $li.setAttribute('class','item4');
+      $li.textContent = 'menu4';
+        
+      const $parent = document.querySelector('ul');
+      $parent.appendChild($li);
+    }
+    //2)menu5를 menu1과 menu2 사이에 삽입하기
+    // 부모요소.insertBefore(삽입할요소, 대상요소)
+    {
+      const $li = document.createElement('li');
+      $li.setAttribute('class','item5');
+      $li.textContent = 'menu5';
+      
+      const $parent = document.querySelector('ul');
+      $parent.insertBefore($li,$parent.querySelector('.item2'));
+    }
+    //3)menu6를 menu3아래로 추가하기
+    // 부모요소.insertBefore(삽입할요소, null) = 부모요소.appendChild(자식요소)
+    {
+      const $li = document.createElement('li');
+      $li.setAttribute('class','item6');
+      $li.textContent = 'menu6';
+        
+      const $parent = document.querySelector('ul');
+      $parent.insertBefore($li, null); //  $parent.appendChild($li)와 동일한 효과
+    }
+    //4) 이미 존재하는 노드를 appendChild, insertBefore 사용하면 이동하는 효과
+    // 이미 존재한는 menu2  부모요소의 마지막으로 이동
+    {
+      const $toMove = document.querySelector('.item2');
+      const $parent = document.querySelector('ul');
+      $parent.appendChild($toMove);
+    }
+    // 이미 존재한는 menu5를 부모요소의 자식요소 menu6 앞으로 이동
+    {
+      const $toMove = document.querySelector('.item5');
+      const $toTarget = document.querySelector('.item6');
+      const $parent = document.querySelector('ul');
+      $parent.insertBefore($toMove, $toTarget);
+    }
+    //5) 이미 존재하는 노드를 부모요소의 처음으로 이동
+    // menu5 요소를 부모요소의 첫번째 자식요소로 이동
+    {
+      const $toMove = document.querySelector('.item5');
+      const $parent = document.querySelector('ul');
+      $parent.insertBefore($toMove, $parent.firstChild)
+    }
+    //6) 이미 존재하는 요소를 새로운 요소로 교체
+    // 부모요소.replaceChild(새로운요소, 이미존재하는요소)
+    {
+      const $parent = document.querySelector('li.item5');
+      const $oldEle = document.querySelector('li.item5').firstChild;
+
+      const $input = document.createElement('input');
+      $input.value = $oldEle.textContent.trim();
+      $input.size = $input.value.length;
+
+      $parent.replaceChild($input, $oldEle);
+    }
+
+  </script>
+</body>
+</html>

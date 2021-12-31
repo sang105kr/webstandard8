@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>documentFragment : 서브Dom 생성</title>
+</head>
+<body>
+  <ul class="wrap"></ul>
+  <script>
+    const $parent = document.querySelector('ul.wrap');
+    // case1) 서브dom 만들지 않고 dom 트리에 추가
+    // let $li = document.createElement('li');
+    // $li.textContent = 'menu1';
+    // $parent.appendChild($li);
+
+    // $li = document.createElement('li');
+    // $li.textContent = 'menu2';
+    // $parent.appendChild($li);
+
+    // $li = document.createElement('li');
+    // $li.textContent = 'menu3';
+    // $parent.appendChild($li);
+
+    //case2) 서브dom을 활용하면 dom트리 변경을 줄일수있어 퍼퍼먼스에 효과를 줌.
+    // const $fragment = document.createDocumentFragment(); //서브 dom생성
+    // let $li = document.createElement('li');
+    // $li.textContent = 'menu1';
+    // $fragment.appendChild($li);
+
+    // $li = document.createElement('li');
+    // $li.textContent = 'menu2';
+    // $fragment.appendChild($li);
+
+    // $li = document.createElement('li');
+    // $li.textContent = 'menu3';
+    // $fragment.appendChild($li);
+
+    // $parent.appendChild($fragment);
+
+    // case3) 서브dom + 노드복사
+    const $fragment = document.createDocumentFragment();
+    let $li = document.createElement('li');
+    $li.textContent = 'menu1';
+    $fragment.appendChild($li);
+
+    let $copyed = $li.cloneNode(false)
+    $copyed.textContent = 'menu2';
+    $fragment.appendChild($copyed);
+
+    $copyed = $li.cloneNode(false);
+    $copyed.textContent = 'menu3';
+    $fragment.appendChild($copyed);
+
+    const $fragment2 = $fragment.cloneNode(true);
+
+    $parent.appendChild($fragment);
+    $parent.appendChild($fragment2);
+  </script>
+</body>
+</html>
