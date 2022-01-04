@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul class="wrap"></ul>
+
+  <script>
+
+    const $parent = document.querySelector('ul.wrap');
+    const $li = makeElement('li', {class:'item', id:'id1'}, 'menu1',
+                             makeElement('input'),
+                             makeElement('button',{class:'editBtn'},'수정'),
+                             makeElement('button',{class:'cancelBtn'},'취소')
+                            );
+    $parent.appendChild($li);
+
+
+    //makeElement(태그이름, 속성..);
+    //makeElement(li, { class:item, id:item1 })
+
+    function makeElement(tagName, attributes, ...contents){
+
+      //태그생성
+      const elementNode = document.createElement(tagName);
+
+      //어트리뷰트 추가
+      if(attributes){
+        for(let attr in attributes){
+          if(attributes.hasOwnProperty(attr)) {
+            elementNode.setAttribute(attr,attributes[attr] );
+          }
+        }
+      }
+
+      //arguments : 함수의 매개변수 정보를 가지고 있는객체
+      // for(let i=2; i<arguments.length; i++){
+      //   let child = arguments[i];
+
+      //   //3번째 매개값이 문자열이면 텍스트 노드생성
+      //   if(typeof child == 'string' ) {
+      //     child = document.createTextNode(child);
+      //   }
+      //   elementNode.appendChild(child);
+      // }
+
+      for(let i=0; i < contents.length; i++){
+        let child = contents[i];
+
+        //3번째 매개값이 문자열이면 텍스트 노드생성
+        if(typeof child === 'string' ) {
+          child = document.createTextNode(child);
+        }
+        elementNode.appendChild(child);        
+      }
+
+      return elementNode;
+    }
+  </script>
+</body>
+</html>

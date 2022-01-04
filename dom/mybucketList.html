@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="util.js"></script>
 </head>
 <body>
   <input type="text" name="menu" id="menu"><button id="addBtn">추가</button>
@@ -55,38 +56,27 @@
       if(evt.target.matches('.editBtn')){
         console.log('수정버튼 클릭!');
         //수정모드 li태그 생성
-        const $li = document.createElement('li');
-        const $input = document.createElement('input');
-        const $saveBtn = document.createElement('button');
-        const $cancelBtn = document.createElement('button');
+        const $liEle = makeElement('li', { 'class':'editMode'},
+                         makeElement('input',null, $toMove.firstChild.textContent),
+                         makeElement('button',{'class':'save'},'저장'),
+                         makeElement('button',{'class':'cancel'},'취소'),
+                       );
 
-        $input.value = $toMove.firstChild.textContent;
-        $saveBtn.textContent = '저장';
-        $cancelBtn.textContent = '취소';
-
-        $li.setAttribute('class','editMode');
-        $li.appendChild($input); //<li class='editMode'><input></li>
-        $li.appendChild($saveBtn);//<li class='editMode'><input><Button>저장</Button></li>
-        $li.appendChild($cancelBtn);//<li class='editMode'><input><Button>저장</Button><Button>취소</Button></li>
-
-        $buketList.replaceChild($li, $toMove);
-        // console.log($toMove.textContent);
-        // console.log($toMove.innerHTML);
-        //console.log($toMove.firstChild.textContent);
+        $buketList.replaceChild($liEle, $toMove);
       
         //저장
-        $saveBtn.addEventListener('click',function(evt){
+        $liEle.querySelector('.save').addEventListener('click',function(evt){
           console.log('저장');
-          $toMove.firstChild.textContent = $input.value;
-          $buketList.replaceChild($toMove, $li);
+          $toMove.firstChild.textContent = $liEle.querySelector('input').value;
+          $buketList.replaceChild($toMove, $liEle);
 
           //로컬 저장소 변경
           localStorage.setItem($toMove.dataset.key, $toMove.firstChild.textContent);
         },false);
 
         //취소
-        $cancelBtn.addEventListener('click',function(evt){
-          $buketList.replaceChild($toMove, $li);
+        $liEle.querySelector('.cancel').addEventListener('click',function(evt){
+          $buketList.replaceChild($toMove, $liEle);
         },false);
 
 
@@ -147,52 +137,20 @@
            return;
       }
 
-      //1) 요소(element)생성
-      const $li = document.createElement('li');  // <li></li>
-      const $editBtn = document.createElement('button');      
-      const $delBtn = document.createElement('button');
-      const $upBtn = document.createElement('button');
-      const $downBtn = document.createElement('button');
-      const $topBtn = document.createElement('button');
-      const $bottomBtn = document.createElement('button');
-      console.log($li);
+      //1) li 컨텐츠 생성
+      const $liEle = makeElement('li', { 'class':'item item3', 'id':'id3', 'data-key': new Date().toLocaleString() }, menu.value,
+                          makeElement('button',{'class':'editBtn'},'수정'),
+                          makeElement('button',{'class':'delBtn'},'삭제'),
+                          makeElement('button',{'class':'upBtn'},'위'),
+                          makeElement('button',{'class':'downBtn'},'아래'),
+                          makeElement('button',{'class':'topBtn'},'처음'),
+                          makeElement('button',{'class':'bottomBtn'},'마지막'),
+                       );      
 
-      //2) 속성 추가
-      $li.setAttribute('class','item item3');
-      $li.setAttribute('id','id3');
-      $li.setAttribute('data-key', new Date().toLocaleString());
+      //2) dom트리에 추가
+      $buketList.appendChild($liEle);
 
-      $editBtn.setAttribute('class','editBtn');
-      $delBtn.setAttribute('class','delBtn');
-      $upBtn.setAttribute('class','upBtn');
-      $downBtn.setAttribute('class','downBtn');
-      $topBtn.setAttribute('class','topBtn');
-      $bottomBtn.setAttribute('class','bottomBtn');
-      console.log($li);
-
-      //3) 컨텐츠추가
-      $li.textContent = menu.value;
-      $editBtn.textContent = '수정';
-      $delBtn.textContent = '삭제';
-      $delBtn.textContent = '삭제';
-      $upBtn.textContent = '위로';
-      $downBtn.textContent = '아래로';
-      $topBtn.textContent = '처음으로';
-      $bottomBtn.textContent = '마지막으로';
-      console.log($li);
-
-      //4) 부모요소에 자식요소로 추가
-      $li.appendChild($editBtn);
-      $li.appendChild($delBtn);
-      $li.appendChild($upBtn);
-      $li.appendChild($downBtn);
-      $li.appendChild($topBtn);
-      $li.appendChild($bottomBtn);
-
-      //5) dom트리에 추가
-      $buketList.appendChild($li);
-
-      //6) 로컬 저장소에 저장
+      //3) 로컬 저장소에 저장
       const currTime = new Date().toLocaleString();
       window.localStorage.setItem( currTime ,menu.value);
     }
@@ -205,41 +163,18 @@
       for(let i=0; i<localStorage.length; i++){
         const key = localStorage.key(i);
         const value = localStorage.getItem(key);
-        console.log(key, value);
+        //console.log(key, value);
 
-        const $li = document.createElement('li');
-        const $editBtn = document.createElement('button');
-        const $delBtn = document.createElement('button');
-        const $upBtn = document.createElement('button');
-        const $downBtn = document.createElement('button');
-        const $topBtn = document.createElement('button');
-        const $bottomBtn = document.createElement('button');
+        const $liEle = makeElement('li', { 'data-key': key }, value,
+                          makeElement('button',{'class':'editBtn'},'수정'),
+                          makeElement('button',{'class':'delBtn'},'삭제'),
+                          makeElement('button',{'class':'upBtn'},'위'),
+                          makeElement('button',{'class':'downBtn'},'아래'),
+                          makeElement('button',{'class':'topBtn'},'처음'),
+                          makeElement('button',{'class':'bottomBtn'},'마지막'),
+                       );
 
-        $li.setAttribute('data-key', key);
-        $li.textContent = value;
-
-        $editBtn.setAttribute('class','editBtn');
-        $delBtn.setAttribute('class','delBtn');
-        $upBtn.setAttribute('class','upBtn');
-        $downBtn.setAttribute('class','downBtn');
-        $topBtn.setAttribute('class','topBtn');
-        $bottomBtn.setAttribute('class','bottomBtn');
-
-        $editBtn.textContent = '수정';
-        $delBtn.textContent = '삭제';
-        $upBtn.textContent = '위로';
-        $downBtn.textContent = '아래로';
-        $topBtn.textContent = '처음으로';
-        $bottomBtn.textContent = '마지막으로';
-
-        $li.appendChild($editBtn);
-        $li.appendChild($delBtn);
-        $li.appendChild($upBtn);
-        $li.appendChild($downBtn);
-        $li.appendChild($topBtn);
-        $li.appendChild($bottomBtn);
-
-        $fragment.appendChild($li);
+        $fragment.appendChild($liEle);
       }
       $buketList.appendChild($fragment);
     }
